@@ -1,3 +1,4 @@
+
 # IntArtificial_ImageGeneration
 
 # **Investigacion Preliminar**
@@ -20,6 +21,19 @@ Por otro lado, el discriminador tiene la tarea de evaluar si las imágenes gener
 Entre sus principales aplicaciones se encuentran el arte y diseño como guía o inspiración para algunos artistas o diseñadores. Además de la publicidad y el marketing ya que puede generar imágenes llamativas y atractivas para productos y servicios. Como complemento, se utiliza también en el ámbito de la investigación científica para visualizar conceptos abstractos. También se utiliza para la generación de contenido en medios digitales creando portadas llamativas para los sitios web, redes sociales y más.
 
 
+## **Dalle-2**
+
+**¿Cómo funciona?**
+
+DALL-E 2 representa la evolución de una arquitectura de vanguardia en el campo de la inteligencia artificial, desarrollada por OpenAI. Esta segunda iteración se basa en los principios fundamentales de la arquitectura GPT-3, un modelo de lenguaje generativo preentrenado. Sin embargo, su distinción principal radica en su capacidad para comprender y generar imágenes a partir de descripciones de texto, lo que amplía significativamente su alcance y aplicación en comparación con su predecesor.
+
+En términos de su arquitectura, DALL-E 2 construye sobre la base de GPT-3, pero se enfoca en la generación de imágenes. Esta extensión implica un aumento en la capacidad de producir imágenes de alta resolución con un nivel de detalle sorprendente. A diferencia de la versión anterior, DALL-E 2 ofrece versatilidad en la generación de imágenes, permitiendo la creación de contenido visual en diversas dimensiones. Además, se ha trabajado intensamente en mejorar la coherencia visual de las imágenes generadas, lo que se traduce en una mayor realismo y consistencia en la representación visual.
+
+Uno de los aspectos destacados de DALL-E 2 es su capacidad para comprender y generar una amplia gama de conceptos y objetos, lo que se debe en parte a su entrenamiento con un conjunto de datos más extenso y diversificado. Esto amplía significativamente su utilidad en aplicaciones que van desde el diseño gráfico hasta la creación de arte, publicidad, diseño de productos y generación de contenido visual para diversas plataformas.
+
+**Aplicaciones**
+
+En cuanto a aplicaciones notables, DALL-E 2 se ha convertido en una herramienta valiosa en campos que requieren generación de contenido visual, como el diseño gráfico y la creación artística. También se utiliza en la generación de ilustraciones para publicaciones impresas y digitales, y en la producción de contenido visual para marketing y publicidad. Además, su capacidad para generar imágenes coherentes y detalladas lo hace relevante en la industria del entretenimiento, particularmente en la creación de prototipos de diseño de productos y en la generación de gráficos y elementos visuales para videojuegos.
 
 
 ## **Vertex AI**
@@ -71,6 +85,7 @@ Utiliza una variante del modelo de difusión llamada modelo de difusión latente
 Es accesible a través de una REST API que ofrece las herramientas anteriormente mencionadas, la capacidad de especificar la cantidad de imágenes a generar, configurar su alto y ancho, además soporta formatos PNG y JPG.
 
 **Aplicaciones**
+
 Algunas apps y/o sitios web que usan Stable Diffusion son:
 My Story Bot: Utilizado para generar libros de cuentos para niños de manera automática.
 Art Design: Da sugerencias de contenido atractivo y creativo para SEO.
@@ -89,9 +104,11 @@ DeepAI API permite a desarrolladores tener a su alcance funciones como búsqueda
 
 
 **¿Cómo funciona?**
+
 Es un modelo de lenguaje basado en transformadores, que es un tipo de arquitectura de red neuronal que fue introducida en un artículo de investigación por Vaswani y otros en 2017. El modelo Transformer está compuesto por un codificador y un decodificador, cada uno de ellos formado por una pila de capas similares. El codificador procesa secuencias de entrada, como frases en lenguaje natural, y genera una codificación para cada token en la secuencia. Luego, el decodificador utiliza estas codificaciones para generar una secuencia de tokens de salida, que pueden ser palabras o frases correspondientes a la secuencia de entrada.
 
 **Aplicaciones**
+
 Una de las principales innovaciones del Transformer es el mecanismo de autoatención. Este mecanismo permite al modelo ponderar la importancia de diferentes tokens en la secuencia de entrada al generar la secuencia de salida. Específicamente, en cada capa del codificador o decodificador, el modelo calcula una matriz de atención que refleja la similitud entre cada par de tokens en la secuencia de entrada o salida. Luego, esta matriz de atención se aplica a las codificaciones y decodificaciones para producir una suma ponderada que captura las partes más importantes de la secuencia de entrada o salida.
 
 El Transformer también utiliza conexiones residuales y normalización de capa para ayudar a superar problemas con gradientes que desaparecen en redes más profundas. Estos mecanismos aseguran que los gradientes puedan fluir suavemente a través de la red durante el entrenamiento, incluso cuando se utilizan muchas capas. En general, el modelo de lenguaje basado en Transformer es una herramienta poderosa para el procesamiento de lenguaje natural. Su capacidad para capturar las relaciones entre palabras y frases, y para generar respuestas contextualmente informadas, lo ha convertido en un enfoque popular para una amplia gama de aplicaciones de inteligencia artificial, incluyendo chatbots, traducción automática y generación de texto.
@@ -109,4 +126,7 @@ AI Chat. (n.d.). DeepAI. Retrieved October 10, 2023, from https://deepai.org/cha
 Stable diffusion and dreambooth API - generate and finetune dreambooth stable diffusion using API. (n.d.). Stable Diffusion And Dreambooth API - Generate and Finetune Dreambooth Stable Diffusion Using API. Retrieved October 10, 2023, from https://stablediffusionapi.com/
 
 (N.d.). Stablediffusionweb.com. Retrieved October 10, 2023, from https://stablediffusionweb.com/
+
+Offert, F., & Phan, T. (s/f). A Sign That Spells: DALL·E 2, Invisual Images and The Racial Politics of Feature Space. Retrieved from https://ar5iv.org/abs/2211.06323
+
 
