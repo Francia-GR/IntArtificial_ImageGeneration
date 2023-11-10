@@ -1,0 +1,17 @@
+ID_Cliente,Nombre,Región,Ciudad,Producto,        Cantidad,Fecha_Compra,Precio_Compra,CEDI,Tipo_Tienda,Frecuencia,Entorno
+1,Doña Toñita,Noreste,Monterrey,Coca-Cola 355ml,12,        01-10-2023,$10,Universidad,    Abarrotes,    Semanal,    Escuela
+1,Doña Toñita,Noreste,Monterrey,Sprite 355ml,8,        02-10-2023,$10,Universidad,    Abarrotes,    Semanal,    Escuela
+1,Doña Toñita,Noreste,Monterrey,Fanta 355ml,10,        15-10-2023,$10,Universidad,    Abarrotes,    Semanal,    Escuela
+2,Super Smart,Noreste,Monterrey,Coca-Cola 1L,5,        01-10-2023,$20,Insurgentes,        Mini Market,Mensual,    Oficina
+2,Super Smart,Noreste,Monterrey,Coca-Cola Zero 1L,6,        20-10-2023,$20,Insurgentes,        Mini Market,Mensual,    Oficina
+3,Kiosko Kilo,Noreste,Monterrey,Fanta 355ml,6,        03-10-2023,$10,Guadalupe,    Kiosko,        Quincenal,Gimnasio
+3,Kiosko Kilo,Noreste,Monterrey,Sprite 355ml,5,        17-10-2023,$10,Guadalupe,    Kiosko,        Quincenal,Gimnasio
+4,Abarrotes Mary,Noreste,Monterrey,Coca-Cola Zero 1L,10,        04-10-2023,$20,Lincoln,    Abarrotes,    Semanal,    Oficina
+4,Abarrotes Mary,Noreste,Monterrey,Fanta Uva 355ml,8,        11-10-2023,$10,Lincoln,    Abarrotes,    Semanal,    Oficina
+5,Luisito Super,Noreste,Monterrey,Sprite 2L,3,        05-10-2023,$25,Insurgentes,    Super,        Mensual,    Hospital
+5,Luisito Super,Noreste,Monterrey,Fanta Uva 355ml,7,        06-10-2023,$10,Insurgentes,    Super,        Mensual,    Hospital
+5,Luisito Super,Noreste,Monterrey,Coca-Cola 2L,4,        21-10-2023,$25,Insurgentes,    Super,        Mensual,    Hospital
+6,Market Lulo,Noreste,Monterrey,Coca-Cola 2L,4,        01-10-2023,$25,Universidad,    Mini Market,Quincenal,Gimnasio
+6,Market Lulo,Noreste,Monterrey,Sprite Zero 355ml,6,        16-10-2023,$10,Universidad,    Mini Market,Quincenal,Gimnasio
+7,Don Ernesto,Noreste,Monterrey,Sprite Zero 355ml,5,        07-10-2023,$10,Universidad,        Kiosko,        Semanal,    Escuela
+7,Don Ernesto,Noreste,Monterrey,Coca-Cola 355ml,12,        14-10-2023,$10,Universidad,        Kiosko,        Semanal,    Escuela
