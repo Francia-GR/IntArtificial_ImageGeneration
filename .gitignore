@@ -1,2 +1,4 @@
-text/api_key.py
-text/__pycache__/api_key.cpython-36.pyc
+# Gitignore file for the project
+
+Text/api_key.py
+Text/__pycache__/api_key.cpython-311.pyc
