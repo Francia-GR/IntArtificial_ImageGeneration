@@ -11,22 +11,20 @@ import os
 import random
 
 # For text generation
-import os
-import openai
-import pandas as pd 
-import api_key
 import re
+import openai
+import pandas as pd
+import api_key
 
 # For background image generation
 import torch
 from diffusers import StableDiffusionPipeline, DPMSolverMultistepScheduler
 
 # For image manipulation
-import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 
-# --------------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 
 def text_generation(place, products):
   openai.api_key = api_key.OPENAI_API_KEY
@@ -220,7 +218,7 @@ def draw_products(img, products, text_position, scale_obj = 0.9):
 
 
 
-# -------------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 
 
 def main(environment, products):
@@ -259,7 +257,7 @@ def main(environment, products):
   flyer.save('flyer.jpg', 'JPEG')
 
 
-# -------------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------
 
 '''
 products =  ['Sprite 2L', 'Coca-Cola 355ml']

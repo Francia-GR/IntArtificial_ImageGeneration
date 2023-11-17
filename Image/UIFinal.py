@@ -1,8 +1,10 @@
+"""Modulo que contiene la interfaz gráfica de usuario para la selección de entorno y productos."""
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
 import pandas as pd
-from flyer_generation_oneproduct import main  # Asegúrate de que esta línea corresponda al nombre de tu script y función
+from flyer_generation_oneproduct import main
+# Asegúrate de que esta línea corresponda al nombre de tu script y función
 
 # Carga los datos necesarios para la UI
 df = pd.read_csv("promotion.csv", encoding="ISO-8859-1")
@@ -10,16 +12,17 @@ env_rules_df = pd.read_csv("env_rules.csv", encoding="latin")
 entornos = env_rules_df["Entorno"].tolist()
 
 def actualizar_seleccion():
-    Entorno = entorno_var.get()
+    """Función que se ejecuta al presionar el botón "Confirmar selección"."""
+    entorno = entorno_var.get()
     selected_indices = listbox_productos.curselection()
-    Products = [listbox_productos.get(idx) for idx in selected_indices]
+    products = [listbox_productos.get(idx) for idx in selected_indices]
 
-    if not Products:
+    if not products:
         print("¡Debes seleccionar al menos un producto!")
         return
 
     # Aquí puedes llamar a la función main con los parámetros obtenidos
-    main(Entorno, Products)
+    main(entorno, products)
 
     # Cargar y mostrar la imagen resultante
     try:
@@ -61,7 +64,8 @@ label_productos = ttk.Label(root, text="Selecciona los productos:", background="
 label_productos.pack(pady=5)
 
 productos_unicos = set(df['Producto'])
-listbox_productos = tk.Listbox(root, selectmode=tk.MULTIPLE, exportselection=0, selectbackground="#a6a6a6")
+listbox_productos = tk.Listbox(root, selectmode=tk.MULTIPLE,
+                               exportselection=0, selectbackground="#a6a6a6")
 for producto in productos_unicos:
     listbox_productos.insert(tk.END, producto)
 listbox_productos.pack(pady=5)
