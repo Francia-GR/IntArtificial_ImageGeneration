@@ -205,8 +205,13 @@ def draw_products(img, products, text_position, scale_obj = 0.9):
     loc_obj_adj = (int(loc_obj[0] * (img.size[0] - scaled_size[0])), int(loc_obj[1] * (img.size[1] - scaled_size[1])))
     img.paste(obj, loc_obj_adj, mask = obj)
 
-
     loc_obj = (loc_obj[0] + obj.size[0]/1000, loc_obj[1])
+
+    # Logo
+    obj = Image.open('logo.png')
+    scaled_size = (int(obj.size[0] * 0.3), int((obj.size[1] * int(obj.size[0] * 0.3)) / obj.size[0]))
+    logo = obj.resize(scaled_size)
+    img.paste(logo, (30, img.height-logo.height - 30), mask = logo)
 
   return img
 
@@ -217,6 +222,7 @@ def draw_products(img, products, text_position, scale_obj = 0.9):
 
 def main(products):
   text, background, text_position = text_generation('Tienda', products)
+  background = background + ' in rather dark colors.'
   text_position = 'top-left'
   
   # Generation of Background
