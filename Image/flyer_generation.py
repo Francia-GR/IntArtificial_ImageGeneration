@@ -3,12 +3,19 @@ Previous set-tup
 
 ! pip install diffusers transformers accelerate scipy safetensors
 ! mkdir products
+! pip install openai==0.28
 
 '''
 
 import os
 import random
 
+# For text generation
+import os
+import openai
+import pandas as pd 
+import api_key
+import re
 
 # For background image generation
 import torch
@@ -20,6 +27,76 @@ from PIL import Image, ImageDraw,ImageFont
 
 
 # --------------------------------------------------------------------------------------------------------------------
+
+def text_generation(place, products):
+  openai.api_key = api_key.OPENAI_API_KEY
+  responses = []
+  n = 0
+
+  df = pd.read_csv("promotion.csv", encoding="ISO-8859-1")
+  env_rules_df = pd.read_csv("env_rules.csv", encoding="latin")
+  env_rules_dict = env_rules_df.to_dict()
+
+  Entorno = place#'Tienda'
+  Products = products#['Coca Cola 600ml', 'Leche Santa Clara Light 1L', 'Garrafon Ciel 5L']
+
+  content1 = Entorno
+  content2 = ", ".join(Products)
+
+  anuncio = [
+      {"role": "system", "content": "You are a marketing advisor for Coca Cola. Your job is to create the text in Spanish for a new promotion poster in a " + content1 + "."},
+      {"role": "user", "content": "Use the following products: " + content2 + '''. Limit to 10 words. Limit the text to 15 characters per line. The text should be in Spanish. Choose a setting background for the ad poster (max 5 words). Finally, choose a position for the text (top-left, top-center, top-right, middle-left, middle-right).
+      
+      Output format:
+      
+          Text: Text for the ad poster, use \n to separate lines
+          Background: The setting background for the ad poster, in English
+          Position: The position for the text (top-left, top-center, top-right, middle-left, middle-right)
+      
+      '''},
+      
+  ]
+
+  content1 = Entorno
+  content2 = ", ".join(Products)
+
+  promocion = [
+      {"role": "system", "content": "You are a marketing advisor for Coca Cola. Your job is to create the text in Spanish for a new promotion poster in a " + content1 + ". Were one product being free if you buy the other two."},
+      {"role": "user", "content": "Use the following products: " + content2 + '''. Limit to 15 words. Limit the text to 10 characters per line. The text should be in Spanish. Choose a setting background for the ad poster (max 5 words). Finally, choose a position for the text (top-left, top-center, top-right, middle-left, middle-right).
+      
+      Output format:
+      
+          Text: Text for the ad poster, use \n to separate lines
+          Background: The setting background for the ad poster, in English
+          Position: The position for the text (top-left, top-center, top-right, middle-left, middle-right)
+      
+      '''},
+      
+  ]
+
+  response = openai.ChatCompletion.create(
+      model="gpt-4",
+      messages=promocion,
+      temperature = 0.5,
+      max_tokens = 200
+      )
+
+  responses.append(response)
+  n += 1
+
+
+  text = responses[-1]["choices"][0]["message"]["content"]
+
+  # Save the results in three different variables
+  m = re.match(r'(Text:\s\n)(?P<texto>[\w\S\s]*)(\n\nBackground:\s)(?P<fondo>[\w\S\s]*)(\n\nPosition:\s)(?P<posicion>[\w\S\s]*)', text)
+  m.groupdict()
+
+  texto = m.group('texto')
+  fondo = m.group('fondo')
+  posicion = m.group('posicion')
+
+  # return {'text':texto, 'background':fondo, 'position':posicion}
+  return [texto, fondo, posicion]
 
 def image_generation(prompt, save_as, img_type):
   model_id = "stabilityai/stable-diffusion-2-1"
@@ -100,7 +177,7 @@ def draw_text_on_image(text, size, font_type, position_par, background_img, font
 
 
 
-def draw_products(img, text_position, scale_obj = 0.9):
+def draw_products(img, products, text_position, scale_obj = 0.9):
   image_if_text = {'top-left':'bottom-right',
                   'top-right':'bottom-left',
                   'top-center':'bottom-center',
@@ -138,7 +215,10 @@ def draw_products(img, text_position, scale_obj = 0.9):
 # -------------------------------------------------------------------------------------------------------------------
 
 
-def main(products, background, text, text_position):
+def main(products):
+  text, background, text_position = text_generation('Tienda', products)
+  text_position = 'top-left'
+  
   # Generation of Background
   image_generation(background, 'background_image.jpg', 'JPEG')
 
@@ -157,10 +237,10 @@ def main(products, background, text, text_position):
 
   # Drawing Text
   background_img = Image.open('background_image.jpg')
-  result_img = draw_text_on_image(text, 0.5, "OpenSans-Bold.ttf", text_position, "background_image.jpg")
+  result_img = draw_text_on_image(text, 0.7, "OpenSans-Bold.ttf", text_position, "background_image.jpg")
 
   # Drawing Products
-  flyer = draw_products(result_img, text_position)
+  flyer = draw_products(result_img, products, text_position) #result_img
 
   # Final Image
   flyer.save('flyer.jpg', 'JPEG')
@@ -168,14 +248,14 @@ def main(products, background, text, text_position):
 
 # -------------------------------------------------------------------------------------------------------------------
 
-
-products =  ['Sprite 2L', 'Coca-Cola 355ml']
-background = 'Beach with sunset'
-text = '¡El doble de bebidas\nal precio de una!\nLlevate un Sprite\ncon una Coca-Cola 2L'
-text_position = 'middle-left'
 '''
+products =  ['Sprite 2L', 'Coca-Cola 355ml']
+background = 'Beach with sunset with Coca-Cola 355ml'
+text = '¡Llévate un Sprite\ncon una Coca-Cola 2L'
+text_position = 'top-left'
+
 background = m.group('fondo')
 text = m.group('texto')
 text_position = m.group('posicion')
 '''
-main(products, background, text, text_position)
+main(['Sprite 2L', 'Coca-Cola 355ml'])
