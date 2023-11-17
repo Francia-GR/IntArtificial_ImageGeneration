@@ -19,9 +19,6 @@ import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw,ImageFont
 
 
-from google.colab import drive
-drive.mount("/content/gdrive")
-
 
 # --------------------------------------------------------------------------------------------------------------------
 
@@ -149,7 +146,8 @@ def main(products, background, text, text_position):
   # Product Images Retrieval
   for i in range(len(products)):
     product_name = products[i]
-    ruta_imagen = retrieve_image(product_name, "/content/gdrive/MyDrive/Imagenes_Publicidad_Reto")
+    ruta_imagen = retrieve_image(product_name, os.path.join(os.getcwd(), "Imagenes_Publicidad_Reto")
+)
 
     if ruta_imagen:
         imagen = Image.open(ruta_imagen)
