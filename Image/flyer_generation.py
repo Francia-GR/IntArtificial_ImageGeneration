@@ -15,8 +15,8 @@ import torch
 from diffusers import StableDiffusionPipeline, DPMSolverMultistepScheduler
 
 # For image manipulation
+import matplotlib.pyplot as plt
 from PIL import Image, ImageDraw,ImageFont
-
 
 
 # --------------------------------------------------------------------------------------------------------------------
@@ -82,7 +82,7 @@ def draw_text_on_image(text, size, font_type, position_par, background_img, font
     font = ImageFont.truetype(font_type, font_size)
 
     # Get the size of the text
-    text_size = draw.textsize(text, font=font)
+    text_size = draw.textbbox((0,0), text, font=font)
 
     # Stablishing positions based on image and text size
     positions = {'center':(int(img.width / 2 - text_size[0] / 2), int(img.height / 2 - text_size[1] / 2)),
@@ -145,8 +145,8 @@ def main(products, background, text, text_position):
   # Product Images Retrieval
   for i in range(len(products)):
     product_name = products[i]
-    ruta_imagen = retrieve_image(product_name, os.path.join(os.getcwd(), "ImagenesPublicidad")
-)
+    ruta_imagen = retrieve_image(product_name, os.path.join(os.getcwd(), "ImagenesPublicidad"))
+    # ruta_imagen = retrieve_image(product_name, "/content/gdrive/MyDrive/Imagenes_Publicidad_Reto")
 
     if ruta_imagen:
         imagen = Image.open(ruta_imagen)
