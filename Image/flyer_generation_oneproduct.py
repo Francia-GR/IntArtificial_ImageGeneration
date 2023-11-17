@@ -23,7 +23,7 @@ from diffusers import StableDiffusionPipeline, DPMSolverMultistepScheduler
 
 # For image manipulation
 import matplotlib.pyplot as plt
-from PIL import Image, ImageDraw,ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 
 # --------------------------------------------------------------------------------------------------------------------
@@ -107,7 +107,7 @@ def image_generation(prompt, save_as, img_type):
   pipe = pipe.to("cuda")
 
   image = pipe(prompt).images[0]
-
+  
   image.save(save_as, img_type)
 
 
@@ -192,7 +192,7 @@ def draw_products(img, products, text_position, scale_obj = 0.9):
   '''
   init_position = {'bottom-right':(scale_obj, scale_obj),
                   'bottom-left':(-0,1, scale_obj),
-                  'bottom-center':(0.4, scale_obj),
+                  'bottom-center':(0.5, 0.7),
                   'middle-right':(scale_obj, scale_obj/2),
                   'middle-left':(-0.1, scale_obj/2)}
 
@@ -248,6 +248,7 @@ def main(environment, products):
 
   # Image
   background_img = Image.open('background_image.jpg')
+  background_img = background_img.filter(ImageFilter.BLUR)
   # Drawing Products
   result_img = draw_products(background_img, products, text_position) #result_img
   result_img.save("new_background_image.jpg", 'JPEG')
