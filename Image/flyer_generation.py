@@ -220,8 +220,8 @@ def draw_products(img, products, text_position, scale_obj = 0.9):
 # -------------------------------------------------------------------------------------------------------------------
 
 
-def main(products):
-  text, background, text_position = text_generation('Tienda', products)
+def main(environment, products):
+  text, background, text_position = text_generation(environment, products)
   background = background + ' in rather dark colors.'
   text_position = 'top-left'
   
@@ -264,4 +264,4 @@ background = m.group('fondo')
 text = m.group('texto')
 text_position = m.group('posicion')
 '''
-main(['Sprite 2L', 'Coca-Cola 355ml'])
+main('Tienda', ['Sprite 2L', 'Coca-Cola 355ml'])
